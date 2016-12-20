@@ -1,0 +1,91 @@
+CREATE DATABASE FLEETOPA_TRAVEL;
+
+create user "fleetopa_nil"@"localhost" identified by "infy@123";
+GRANT ALL PRIVILEGES ON *.* TO 'fleetopa_nil'@'localhost' IDENTIFIED BY 'infy@123'
+
+create table login(
+userid varchar(50) not null,
+password varchar(100) not null,
+user_type varchar(20) not null,
+email varchar(100) not null,
+primary key (userid)
+);
+alter table login
+add constraint chk_login_user_type check (user_type = "admin" or user_type = "master");
+
+
+insert into login values("niladri",sha1("kindness"),"master","niladrishekhar@gmail.com");
+
+create table places(
+place varchar(100) not null,
+primary key (place)
+);
+
+create table stay_type(
+place varchar(100) not null,
+staytype varchar(100) not null ,
+price double not null,
+constraint fk_stay_type_place foreign key (place)
+references places(place),
+primary key (place,staytype)
+);
+
+create table travel_type(
+traveltype varchar(100) not null,
+price double not null,
+place varchar(100) not null,
+constraint fk_travel_type_place foreign key (place)
+references places(place),
+primary key (place,traveltype)
+);
+
+create table orders (
+order_id int not null auto_increment,
+name varchar(100),
+mobile_no varchar(15) not null,
+email_id varchar(100) not null,
+address varchar(300),
+persons int not null,
+travel_date date not null,
+travel_to varchar(100) not null,
+stay_type varchar(100) not null,
+travel_type varchar(100) not null,
+status varchar(100),
+no_days int not null,
+primary key (order_id),
+constraint fk_orders_travel_to foreign key(travel_to)
+references places(place)
+);
+
+create table comments (
+order_id int not null,
+userid varchar(100) not null,
+comment varchar(100) not null,
+logtime timestamp,
+constraint fk_comments_userid foreign key (userid)
+references login(userid),
+constraint fk_comments_orderid foreign key (order_id)
+references orders(order_id),
+primary key (order_id,userid)
+);
+
+insert into stay_type values ("Rambha","AC Cottage",2400);
+insert into stay_type values ("Rambha","AC DR",1200);
+insert into stay_type values ("Rambha","Non AC DR",650);
+insert into stay_type values ("Taptapani","LOG HOUSE",2300);
+insert into stay_type values ("Taptapani","Deluxe Suite",2900);
+insert into stay_type values ("Taptapani","Non AC DR",850);
+insert into stay_type values ("Taptapani","Non AC FR",1150);
+insert into stay_type values ("Taptapani","Tree House",2300);
+insert into stay_type values ("Taptapani","Tent",850);
+insert into stay_type values ("Gopalpur","AC Cottage",2300);
+insert into stay_type values ("Gopalpur","AC DR",900);
+insert into stay_type values ("Gopalpur","Non AC DR",600);
+insert into stay_type values ("Daringbadi","Guest House",500);
+
+
+
+insert into travel_type values ("Travera", 5000,"Rambha");
+insert into travel_type values ("Travera", 5000,"Taptapani");
+insert into travel_type values ("Travera", 5000,"Gopalpur");
+insert into travel_type values ("Travera", 5000,"Daringbadi");

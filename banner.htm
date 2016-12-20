@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Flee to Paradise</title>
+<link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/grid.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/banner_style.css" type="text/css" media="all">
+<script type="text/javascript" src="js/jquery-1.4.3.min.js" ></script>
+<script type="text/javascript" src="js/cufon-yui.js"></script>
+<script type="text/javascript" src="js/cufon-replace.js"></script>  
+<script type="text/javascript" src="js/RomanSerif_500.font.js"></script>
+<script type="text/javascript" src="js/jquery.nivo.slider.pack.js"></script>
+ 
+  <!--[if lt IE 9]>
+    <script type="text/javascript" src="http://info.template-help.com/files/ie6_warning/ie6_script_other.js"></script>
+  	<script type="text/javascript" src="js/html5.js"></script>
+  <![endif]-->
+
+
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+-->
+</style></head>
+
+<body>
+
+		<!--.................  banner animation  starts  ...............-->
+		<div class="container_12">
+						
+						
+							<div class="grid_12">
+
+								<div id="slider">
+									<img src="images/banners/img1.jpg" width="900px" height="300px">
+									<img src="images/banners/img2.jpg" width="900px" height="300px">
+									<img src="images/banners/img3.jpg" width="900px" height="300px">
+									<img src="images/banners/img4.jpg" width="900px" height="300px">
+									<img src="images/banners/img5.jpg" width="900px" height="300px">								</div>
+							</div>	
+				</div>
+				
+			
+			<!--...........................................-->
+			
+
+<script type="text/javascript"> Cufon.now(); </script>
+<script type="text/javascript">
+	$(window).load(function() {
+    $('#slider').nivoSlider({
+        effect:'fold', //Specify sets like: 'fold,fade,sliceDown, sliceDownLeft, sliceUp, sliceUpLeft, sliceUpDown, sliceUpDownLeft'    
+
+        slices:20,
+        animSpeed:500,
+        pauseTime:3500,
+        startSlide:0, //Set starting Slide (0 index)
+        directionNav:false, //Next & Prev
+        directionNavHide:false, //Only show on hover
+        controlNav:true, //1,2,3...
+        controlNavThumbs:false, //Use thumbnails for Control Nav
+        controlNavThumbsFromRel:false, //Use image rel for thumbs
+        controlNavThumbsSearch: '.jpg', //Replace this with...
+        controlNavThumbsReplace: '_thumb.jpg', //...this in thumb Image src
+        keyboardNav:true, //Use left & right arrows
+        pauseOnHover:true, //Stop animation while hovering
+        manualAdvance:false, //Force manual transitions
+        captionOpacity:1, //Universal caption opacity
+        beforeChange: function(){},
+        afterChange: function(){Cufon.refresh();$('.nivo-caption').animate({right:'0px'},400);},
+        slideshowEnd: function(){} //Triggers after all slides have been shown
+    });
+	Cufon.refresh();
+	});
+</script>
+<!--.................  banner animation  ends  ...............-->	
+  
+</body>
+</html>
